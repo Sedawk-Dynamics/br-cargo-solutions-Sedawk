@@ -1,0 +1,117 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Montserrat', 'Montserrat Fallback', sans-serif;
+
+  /* BR Cargo brand palette */
+  --color-brand-navy: #0F2C59;
+  --color-brand-orange: #F97316;
+  --color-brand-slate: #64748B;
+  --color-brand-white: #FFFFFF;
+  --color-brand-navy-light: #1a3d7a;
+  --color-brand-navy-dark: #091e3e;
+  --color-brand-orange-hover: #ea6a05;
+  --color-brand-bg-light: #F8FAFC;
+
+  /* Map shadcn tokens to brand */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  --background: #F8FAFC;
+  --foreground: #0F2C59;
+  --card: #FFFFFF;
+  --card-foreground: #0F2C59;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F2C59;
+  --primary: #F97316;
+  --primary-foreground: #FFFFFF;
+  --secondary: #EFF6FF;
+  --secondary-foreground: #0F2C59;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #FFF7ED;
+  --accent-foreground: #F97316;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #F97316;
+  --radius: 0.625rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+  }
+}
+
+/* Smooth scroll & overflow control */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* ── Custom scrollbar (Webkit: Chrome, Safari, Edge) ── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 0px; /* hides horizontal scrollbar entirely */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-navy-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-orange);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-orange-hover);
+}
+
+/* ── Firefox scrollbar ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-brand-orange) var(--color-brand-navy-dark);
+}
