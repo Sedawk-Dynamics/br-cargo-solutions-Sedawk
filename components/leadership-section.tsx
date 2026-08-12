@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Quote, BadgeCheck, Users, Globe } from 'lucide-react'
 
@@ -22,24 +23,29 @@ export default function LeadershipSection() {
             transition={{ duration: 0.55 }}
             className="relative"
           >
-            <div className="bg-[#0F2C59] rounded-2xl p-8 md:p-10 text-white overflow-hidden">
+            <div className="relative rounded-2xl p-10 md:p-14 pt-12 md:pt-16 text-white overflow-hidden shadow-xl border border-slate-800">
+              {/* Background Image */}
+              <Image
+                src="/leadership-msg.jpg"
+                alt="Leadership Message"
+                fill
+                className="object-cover pointer-events-none"
+              />
+              {/* Dark tint overlay (no blue) */}
+              <div className="absolute inset-0 bg-black/65" />
+
               {/* Decorative quote mark */}
-              <div aria-hidden className="absolute top-4 right-6 opacity-10">
-                <Quote size={80} />
+              <div aria-hidden className="absolute top-6 right-8 opacity-15 z-10">
+                <Quote size={72} />
               </div>
 
-              <div className="relative">
-                {/* Avatar placeholder */}
-                <div className="w-20 h-20 rounded-2xl bg-[#F97316]/20 border-2 border-[#F97316]/40 flex items-center justify-center mb-6">
-                  <span className="text-3xl font-black text-[#F97316]">BC</span>
-                </div>
-
-                <blockquote className="text-white/85 text-lg leading-relaxed italic mb-8 border-l-4 border-[#F97316] pl-5">
-                  &ldquo;Every shipment represents more than cargo; it represents
+              <div className="relative z-10 pt-8 md:pt-10">
+                <blockquote className="text-white text-lg leading-relaxed italic mt-6 mb-8 border-l-4 border-[#F97316] pl-6 font-medium">
+                  &ldquo; Every shipment represents more than cargo; it represents
                   commitments, opportunities, and the trust our clients place in
                   us. We don&apos;t simply transport cargo — we build lasting
                   partnerships through trust, accountability, and consistent
-                  performance.&rdquo;
+                  performance. &rdquo;
                 </blockquote>
 
                 <div className="flex items-center gap-4">
@@ -50,7 +56,7 @@ export default function LeadershipSection() {
                     <p className="text-[#F97316] font-semibold text-sm">
                       Director, BR Cargo Solutions Pvt. Ltd.
                     </p>
-                    <p className="text-white/50 text-xs mt-1">
+                    <p className="text-white/80 text-xs mt-1">
                       +91 9999879337
                     </p>
                   </div>

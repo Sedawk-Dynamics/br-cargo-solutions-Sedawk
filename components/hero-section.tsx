@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Plane, Ship, Truck, ArrowRight } from 'lucide-react'
 
@@ -9,18 +10,21 @@ const transportModes = [
     title: 'Air Freight',
     desc: 'Time-critical cargo, worldwide hubs',
     color: 'from-blue-600 to-blue-800',
+    href: '/services/air-freight',
   },
   {
     icon: Ship,
     title: 'Ocean Freight',
     desc: 'FCL & LCL across all sea routes',
     color: 'from-[#0F2C59] to-[#1a3d7a]',
+    href: '/services/ocean-freight',
   },
   {
     icon: Truck,
     title: 'Road Transport',
     desc: 'Container movement, door-to-door',
     color: 'from-orange-500 to-orange-700',
+    href: '/services/road-container-movement',
   },
 ]
 
@@ -40,8 +44,22 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative bg-[#0F2C59] overflow-hidden min-h-[92vh] flex items-center"
+      className="relative bg-[#0F2C59] overflow-hidden min-h-screen lg:h-screen flex items-center justify-center pt-32 pb-12 lg:pt-40 lg:pb-16"
     >
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-55"
+      >
+        <source src="/hero-bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark Blue Overlay to maintain blue theme */}
+      <div className="absolute inset-0 bg-[#0F2C59]/60" />
+
       {/* Background pattern */}
       <div
         aria-hidden
@@ -62,7 +80,7 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-20 md:pt-36 w-full">
+      <div className="relative max-w-7xl mx-auto px-6 w-full mt-4 lg:mt-8">
         <motion.div
           variants={container}
           initial="hidden"
@@ -81,7 +99,7 @@ export default function HeroSection() {
 
             <motion.h1
               variants={item}
-              className="text-3xl md:text-5xl xl:text-5xl font-extrabold text-white leading-tight text-balance mb-6"
+              className="text-3xl md:text-4xl xl:text-4xl font-extrabold text-white leading-tight text-balance mb-6"
             >
               Seamless Global Logistics &{' '}
               <span className="text-[#F97316]">
@@ -110,12 +128,12 @@ export default function HeroSection() {
                 Request Quote
                 <ArrowRight size={18} />
               </a>
-              <a
-                href="#services"
+              <Link
+                href="/services/air-freight"
                 className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-7 py-3.5 rounded-md transition-colors text-base"
               >
                 Explore Services
-              </a>
+              </Link>
             </motion.div>
 
             {/* Stats strip */}
@@ -152,60 +170,32 @@ export default function HeroSection() {
                   initial={{ opacity: 0, x: 40 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5 + i * 0.15, duration: 0.5, ease: 'easeOut' as const }}
-                  className="flex items-center gap-5 bg-white/8 backdrop-blur-sm border border-white/10 rounded-xl p-5 hover:bg-white/12 transition-colors group"
                 >
-                  <div
-                    className={`bg-gradient-to-br ${mode.color} p-3.5 rounded-xl shadow-lg flex-shrink-0`}
+                  <Link
+                    href={mode.href}
+                    className="flex items-center gap-5 bg-white/8 backdrop-blur-sm border border-white/10 rounded-xl p-5 hover:bg-white/15 hover:border-white/25 transition-all group block"
                   >
-                    <mode.icon size={26} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-bold text-base">
-                      {mode.title}
-                    </h3>
-                    <p className="text-white/60 text-sm mt-0.5">{mode.desc}</p>
-                  </div>
-                  <ArrowRight
-                    size={18}
-                    className="text-white/30 group-hover:text-[#F97316] transition-colors ml-auto"
-                  />
+                    <div
+                      className={`bg-gradient-to-br ${mode.color} p-3.5 rounded-xl shadow-lg flex-shrink-0`}
+                    >
+                      <mode.icon size={26} className="text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold text-base group-hover:text-[#F97316] transition-colors">
+                        {mode.title}
+                      </h3>
+                      <p className="text-white/60 text-sm mt-0.5">{mode.desc}</p>
+                    </div>
+                    <ArrowRight
+                      size={18}
+                      className="text-white/30 group-hover:text-[#F97316] group-hover:translate-x-1 transition-all ml-auto"
+                    />
+                  </Link>
                 </motion.div>
               ))}
-
-              {/* CTA card */}
-              <motion.a
-                href="#contact"
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.95, duration: 0.5, ease: 'easeOut' as const }}
-                className="flex items-center justify-between bg-[#F97316] rounded-xl p-5 hover:bg-[#ea6a05] transition-colors group"
-              >
-                <div>
-                  <p className="text-white font-bold text-base">
-                    Talk to Our Experts
-                  </p>
-                  <p className="text-white/80 text-sm mt-0.5">
-                    +91 9999879337
-                  </p>
-                </div>
-                <ArrowRight
-                  size={22}
-                  className="text-white group-hover:translate-x-1 transition-transform"
-                />
-              </motion.a>
             </div>
           </motion.div>
         </motion.div>
-      </div>
-
-      {/* Wave divider */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path
-            d="M0 60L60 50C120 40 240 20 360 15C480 10 600 20 720 25C840 30 960 30 1080 25C1200 20 1320 10 1380 5L1440 0V60H1380C1320 60 1200 60 1080 60C960 60 840 60 720 60C600 60 480 60 360 60C240 60 120 60 60 60H0Z"
-            fill="#F8FAFC"
-          />
-        </svg>
       </div>
     </section>
   )

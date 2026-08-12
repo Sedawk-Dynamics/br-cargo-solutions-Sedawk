@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Target, Eye, ShieldCheck, CheckCircle } from 'lucide-react'
 
@@ -135,25 +136,37 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="flex-1"
+            className="flex-1 w-full"
           >
-            <div className="bg-[#0F2C59] rounded-2xl p-8 text-white">
-              <h3 className="text-xl font-bold mb-6">
-                What Sets Us Apart
-              </h3>
-              <ul className="space-y-4">
-                {usps.map((usp) => (
-                  <li key={usp} className="flex items-start gap-3">
-                    <CheckCircle
-                      size={20}
-                      className="text-[#F97316] flex-shrink-0 mt-0.5"
-                    />
-                    <span className="text-white/85 text-sm leading-relaxed">
-                      {usp}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+            <div className="relative rounded-2xl p-8 text-white overflow-hidden shadow-xl border border-slate-800">
+              {/* Background Image */}
+              <Image
+                src="/what-sets-us-apart.png"
+                alt="What Sets Us Apart"
+                fill
+                className="object-cover pointer-events-none"
+              />
+              {/* Dark tint overlay (no blue) */}
+              <div className="absolute inset-0 bg-black/65" />
+
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold mb-6 text-white">
+                  What Sets Us Apart
+                </h3>
+                <ul className="space-y-4">
+                  {usps.map((usp) => (
+                    <li key={usp} className="flex items-start gap-3">
+                      <CheckCircle
+                        size={20}
+                        className="text-[#F97316] flex-shrink-0 mt-0.5"
+                      />
+                      <span className="text-white font-medium text-sm leading-relaxed">
+                        {usp}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -161,3 +174,4 @@ export default function AboutSection() {
     </section>
   )
 }
+
