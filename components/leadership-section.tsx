@@ -29,6 +29,7 @@ export default function LeadershipSection() {
                 src="/leadership-msg.jpg"
                 alt="Leadership Message"
                 fill
+                priority
                 className="object-cover pointer-events-none"
               />
               {/* Dark tint overlay (no blue) */}

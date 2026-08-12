@@ -53,6 +53,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${montserrat.variable} bg-background`}>
+      <head>
+        <link rel="preload" href="/hero-bg.mp4" as="video" type="video/mp4" />
+        <link rel="preload" href="/what-sets-us-apart.png" as="image" />
+        <link rel="preload" href="/leadership-msg.jpg" as="image" />
+        <link rel="preload" href="/br-cargo-logo.jpeg" as="image" />
+        <link rel="preload" href="/air-freight.jpeg" as="image" />
+      </head>
       <body className="antialiased font-sans">
         {children}
         {process.env.NODE_ENV === "production" && <Analytics />}

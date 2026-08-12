@@ -144,6 +144,7 @@ export default function AboutSection() {
                 src="/what-sets-us-apart.png"
                 alt="What Sets Us Apart"
                 fill
+                priority
                 className="object-cover pointer-events-none"
               />
               {/* Dark tint overlay (no blue) */}

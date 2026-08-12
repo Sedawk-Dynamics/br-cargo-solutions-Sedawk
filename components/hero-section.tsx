@@ -52,6 +52,7 @@ export default function HeroSection() {
         loop
         muted
         playsInline
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-55"
       >
         <source src="/hero-bg.mp4" type="video/mp4" />
