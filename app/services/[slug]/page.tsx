@@ -130,7 +130,7 @@ export default function DynamicServicePage() {
             {/* Right Sidebar (1 col) */}
             <div className="flex flex-col gap-6 h-full">
               {/* All Freight Services List */}
-              <div className="bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-sm flex-shrink-0">
+              <div className="hidden lg:block bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-sm flex-shrink-0">
                 <h3 className="text-lg font-bold text-[#0F2C59] mb-4 pb-3 border-b border-[#E2E8F0]">
                   All Freight Services
                 </h3>
