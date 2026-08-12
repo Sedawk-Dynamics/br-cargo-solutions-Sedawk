@@ -39,9 +39,9 @@ export default function Navbar() {
               <Phone size={13} className="text-[#F97316]" />
               <span>+91 9999879337</span>
             </a>
-            <a href="mailto:info@brcargo.co.in" className="flex items-center gap-2 hover:text-[#F97316] transition-colors">
+            <a href="mailto:info@brcargosolutions.com" className="flex items-center gap-2 hover:text-[#F97316] transition-colors">
               <Mail size={13} className="text-[#F97316]" />
-              <span>info@brcargo.co.in</span>
+              <span>info@brcargosolutions.com</span>
             </a>
           </div>
           <span className="text-white/70 text-xs tracking-wide">Mon – Sat: 9:00 AM – 7:00 PM IST</span>

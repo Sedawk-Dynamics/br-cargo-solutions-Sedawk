@@ -171,10 +171,10 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[#F97316] flex-shrink-0" />
                 <a
-                  href="mailto:info@brcargo.co.in"
+                  href="mailto:info@brcargosolutions.com"
                   className="text-white/60 hover:text-[#F97316] text-sm transition-colors"
                 >
-                  info@brcargo.co.in
+                  info@brcargosolutions.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -200,10 +200,10 @@ export default function Footer() {
           <p className="text-white/40 text-xs text-center">
             Domain:{' '}
             <a
-              href="https://brcargo.co.in"
+              href="https://brcargosolutions.com"
               className="hover:text-[#F97316] transition-colors"
             >
-              brcargo.co.in
+              brcargosolutions.com
             </a>
           </p>
         </div>

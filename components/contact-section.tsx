@@ -23,8 +23,8 @@ const contactDetails = [
   {
     icon: Mail,
     label: 'Email',
-    lines: ['info@brcargo.co.in', 'sales@brcargo.co.in', 'ops@brcargo.co.in'],
-    href: 'mailto:info@brcargo.co.in',
+    lines: ['info@brcargosolutions.com', 'sales@brcargosolutions.com', 'ops@brcargosolutions.com'],
+    href: 'mailto:info@brcargosolutions.com',
   },
   {
     icon: Clock,

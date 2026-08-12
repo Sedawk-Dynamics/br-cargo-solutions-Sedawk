@@ -55,7 +55,7 @@ const services = [
   },
   {
     slug: "dgft-export",
-    image: "/dgft-export.jfif",
+    image: "/dgft-export.jpeg",
     title: "DGFT & Export Documentation",
     desc: "Expert handling of DGFT services, import/export licensing, duty drawback, and all regulatory export documentation requirements.",
     tag: "Documentation",
@@ -63,7 +63,7 @@ const services = [
   },
   {
     slug: "road-container-movement",
-    image: "/road-container-movement.jfif",
+    image: "/road-container-movement.jpeg",
     title: "Road Container Movement",
     desc: "Own fleet providing reliable inland container movement, last-mile delivery, and cross-border road freight between countries.",
     tag: "Road",

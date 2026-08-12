@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://brcargo.co.in",
+    url: "https://brcargosolutions.com",
     title: "BR Cargo Solutions Pvt. Ltd. | International Freight & Logistics",
     description:
       "Seamless global logistics & end-to-end freight solutions. Air, ocean, and land freight forwarding with full customs clearance.",
