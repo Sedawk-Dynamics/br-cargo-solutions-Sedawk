@@ -1,11 +1,18 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
-import { Montserrat } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["600", "700", "800"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -52,13 +59,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${montserrat.variable} bg-background`}>
+    <html lang="en" className={`${inter.variable} ${montserrat.variable} bg-background scroll-smooth`}>
       <head>
         <link rel="preload" href="/hero-bg.mp4" as="video" type="video/mp4" />
-        <link rel="preload" href="/what-sets-us-apart.png" as="image" />
-        <link rel="preload" href="/leadership-msg.jpg" as="image" />
-        <link rel="preload" href="/br-cargo-logo.jpeg" as="image" />
-        <link rel="preload" href="/air-freight.jpeg" as="image" />
       </head>
       <body className="antialiased font-sans">
         {children}

@@ -36,8 +36,20 @@ const contactDetails = [
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Opens the visitor's email app with the enquiry pre-filled
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const f = new FormData(e.currentTarget)
+    const subject = `Quote request – ${f.get('cargo') || 'General enquiry'}`
+    const body = [
+      `Name: ${f.get('name')}`,
+      `Email: ${f.get('email')}`,
+      `Phone: ${f.get('phone') || '-'}`,
+      `Service: ${f.get('cargo') || '-'}`,
+      '',
+      String(f.get('message')),
+    ].join('\n')
+    window.location.href = `mailto:info@brcargosolutions.com?cc=sales@brcargosolutions.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     setSubmitted(true)
     setTimeout(() => setSubmitted(false), 4000)
   }
@@ -113,12 +125,13 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="lg:col-span-3 h-full"
+            id="quote"
+            className="lg:col-span-3 h-full scroll-mt-28"
           >
             <div className="bg-white border border-[#E2E8F0] rounded-2xl p-8 shadow-sm h-full flex flex-col justify-between">
               <div>
                 <h3 className="text-[#0F2C59] font-bold text-xl mb-6">
-                  Send Us a Message
+                  Request a Quote
                 </h3>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -126,6 +139,7 @@ export default function ContactSection() {
                       <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wide">Name</span>
                       <input
                         type="text"
+                        name="name"
                         placeholder="Your full name"
                         required
                         className="border border-[#E2E8F0] rounded-lg px-4 py-2.5 text-sm text-[#0F2C59] placeholder-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#F97316]/40 focus:border-[#F97316]"
@@ -135,6 +149,7 @@ export default function ContactSection() {
                       <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wide">Email</span>
                       <input
                         type="email"
+                        name="email"
                         placeholder="you@company.com"
                         required
                         className="border border-[#E2E8F0] rounded-lg px-4 py-2.5 text-sm text-[#0F2C59] placeholder-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#F97316]/40 focus:border-[#F97316]"
@@ -146,6 +161,7 @@ export default function ContactSection() {
                       <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wide">Phone</span>
                       <input
                         type="tel"
+                        name="phone"
                         placeholder="+91 XXXXX XXXXX"
                         className="border border-[#E2E8F0] rounded-lg px-4 py-2.5 text-sm text-[#0F2C59] placeholder-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#F97316]/40 focus:border-[#F97316]"
                       />
@@ -153,6 +169,7 @@ export default function ContactSection() {
                     <label className="flex flex-col gap-1.5">
                       <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wide">Cargo Type</span>
                       <select
+                        name="cargo"
                         className="border border-[#E2E8F0] rounded-lg px-4 py-2.5 text-sm text-[#0F2C59] focus:outline-none focus:ring-2 focus:ring-[#F97316]/40 focus:border-[#F97316] bg-white"
                       >
                         <option value="">Select cargo type</option>
@@ -169,6 +186,7 @@ export default function ContactSection() {
                   <label className="flex flex-col gap-1.5">
                     <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wide">Message</span>
                     <textarea
+                      name="message"
                       rows={4}
                       placeholder="Describe your shipment requirements..."
                       required
@@ -180,10 +198,10 @@ export default function ContactSection() {
                     className="self-start inline-flex items-center gap-2 bg-[#F97316] hover:bg-[#ea6a05] text-white font-bold px-8 py-3 rounded-lg transition-colors text-sm shadow-md shadow-[#F97316]/20"
                   >
                     {submitted ? (
-                      'Message Sent!'
+                      'Opening your email app…'
                     ) : (
                       <>
-                        Send Message <Send size={15} />
+                        Send Quote Request <Send size={15} />
                       </>
                     )}
                   </button>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react'
+import { Menu, X, Phone, Mail, ChevronDown, BadgeCheck } from 'lucide-react'
 import { servicesList } from '@/data/services-data'
 
 const navLinks = [
@@ -44,7 +44,13 @@ export default function Navbar() {
               <span>info@brcargosolutions.com</span>
             </a>
           </div>
-          <span className="text-white/70 text-xs tracking-wide">Mon – Sat: 9:00 AM – 7:00 PM IST</span>
+          <div className="flex items-center gap-5 text-xs tracking-wide">
+            <span className="text-white/80 font-semibold">Fleet Owner &amp; Transport Contractor</span>
+            <span className="inline-flex items-center gap-1.5 bg-[#F97316] text-white font-bold px-2.5 py-0.5 rounded-full">
+              <BadgeCheck size={13} /> ISO Certified
+            </span>
+            <span className="text-white/70">Mon – Sat: 9:00 AM – 7:00 PM IST</span>
+          </div>
         </div>
       </div>
 
@@ -62,17 +68,17 @@ export default function Navbar() {
             <Image
               src="/br-cargo-logo.jpeg"
               alt="BR Cargo Solutions Pvt. Ltd."
-              width={56}
-              height={56}
-              className="h-14 w-14 shrink-0 rounded-lg object-contain bg-white p-1 shadow-sm group-hover:scale-105 transition-transform"
+              width={96}
+              height={96}
+              className="h-16 w-16 md:h-20 md:w-20 shrink-0 rounded-lg object-contain bg-white p-1 shadow-sm group-hover:scale-105 transition-transform"
               priority
             />
             <div className="hidden sm:block leading-tight">
-              <p className="text-white font-extrabold text-base tracking-wide uppercase">
+              <p className="text-white font-extrabold text-lg md:text-xl tracking-wide uppercase">
                 BR Cargo Solutions
               </p>
               <p className="text-[#F97316] text-xs font-semibold tracking-widest uppercase">
-                Pvt. Ltd.
+                Pvt. Ltd. · ISO Certified
               </p>
             </div>
           </Link>

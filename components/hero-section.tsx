@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Plane, Ship, Truck, ArrowRight } from 'lucide-react'
+import { Plane, Ship, Truck, ArrowRight, BadgeCheck } from 'lucide-react'
 
 const transportModes = [
   {
@@ -44,7 +44,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative bg-[#0F2C59] overflow-hidden min-h-screen lg:h-screen flex items-center justify-center pt-32 pb-12 lg:pt-40 lg:pb-16"
+      className="relative bg-black overflow-hidden min-h-screen flex items-center justify-center pt-36 pb-16 md:pt-44 lg:pt-48 lg:pb-20"
     >
       {/* Background Video */}
       <video
@@ -53,35 +53,13 @@ export default function HeroSection() {
         muted
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-55"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       >
         <source src="/hero-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark Blue Overlay to maintain blue theme */}
-      <div className="absolute inset-0 bg-[#0F2C59]/60" />
 
-      {/* Background pattern */}
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage:
-            'radial-gradient(circle at 25% 50%, #F97316 0%, transparent 50%), radial-gradient(circle at 75% 20%, #60a5fa 0%, transparent 45%)',
-        }}
-      />
-      {/* Grid overlay */}
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-      />
-
-      <div className="relative max-w-7xl mx-auto px-6 w-full mt-4 lg:mt-8">
+      <div className="relative max-w-7xl mx-auto px-6 w-full">
         <motion.div
           variants={container}
           initial="hidden"
@@ -98,19 +76,30 @@ export default function HeroSection() {
               </span>
             </motion.div>
 
+            <motion.div variants={item} className="flex flex-wrap gap-2 justify-center lg:justify-start mb-6">
+              <span className="inline-flex items-center gap-2 bg-[#0F2C59] text-white text-xs font-semibold px-3.5 py-1.5 rounded-full tracking-wide uppercase shadow-md">
+                <BadgeCheck size={14} className="text-[#F97316]" />
+                ISO Certified Company
+              </span>
+              <span className="inline-flex items-center gap-2 bg-[#0F2C59] text-white text-xs font-semibold px-3.5 py-1.5 rounded-full tracking-wide uppercase shadow-md">
+                <Truck size={14} className="text-[#F97316]" />
+                Fleet Owner &amp; Transport Contractor
+              </span>
+            </motion.div>
+
             <motion.h1
               variants={item}
-              className="text-3xl md:text-4xl xl:text-4xl font-extrabold text-white leading-tight text-balance mb-6"
+              className="font-heading text-4xl md:text-5xl xl:text-[3.5rem] font-extrabold tracking-tight text-[#0B1F3F] text-halo leading-tight text-balance mb-6"
             >
               Seamless Global Logistics &{' '}
-              <span className="text-[#F97316]">
+              <span className="text-[#EA580C]">
                 End-to-End Freight Solutions
               </span>
             </motion.h1>
 
             <motion.p
               variants={item}
-              className="text-white/70 text-lg leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0"
+              className="text-[#0B1F3F] font-medium text-lg leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 bg-white/80 backdrop-blur-md rounded-xl px-5 py-4 shadow-lg border border-white/60"
             >
               Premier international logistics partner specializing in
               cross-border air, ocean, and land freight management. We bridge
@@ -123,7 +112,7 @@ export default function HeroSection() {
               className="flex flex-wrap items-center gap-4 justify-center lg:justify-start"
             >
               <a
-                href="#quote"
+                href="/#quote"
                 className="inline-flex items-center gap-2 bg-[#F97316] hover:bg-[#ea6a05] text-white font-bold px-7 py-3.5 rounded-md transition-colors shadow-lg shadow-[#F97316]/30 text-base"
               >
                 Request Quote
@@ -131,7 +120,7 @@ export default function HeroSection() {
               </a>
               <Link
                 href="/services/air-freight"
-                className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-7 py-3.5 rounded-md transition-colors text-base"
+                className="inline-flex items-center gap-2 border-2 border-[#0F2C59] bg-white/70 hover:bg-white text-[#0F2C59] font-semibold px-7 py-3.5 rounded-md transition-colors text-base"
               >
                 Explore Services
               </Link>
@@ -148,10 +137,10 @@ export default function HeroSection() {
                 { value: '100%', label: 'In-House Operations' },
               ].map((stat) => (
                 <div key={stat.label} className="text-center lg:text-left">
-                  <p className="text-3xl font-extrabold text-[#F97316]">
+                  <p className="text-3xl font-extrabold text-[#EA580C] text-halo">
                     {stat.value}
                   </p>
-                  <p className="text-white/60 text-sm font-medium mt-0.5">
+                  <p className="text-[#0B1F3F] text-halo text-sm font-semibold mt-0.5">
                     {stat.label}
                   </p>
                 </div>
@@ -174,7 +163,7 @@ export default function HeroSection() {
                 >
                   <Link
                     href={mode.href}
-                    className="flex items-center gap-5 bg-white/8 backdrop-blur-sm border border-white/10 rounded-xl p-5 hover:bg-white/15 hover:border-white/25 transition-all group block"
+                    className="flex items-center gap-5 bg-white/90 border border-white rounded-xl p-5 shadow-lg hover:bg-white hover:shadow-xl transition-all group block"
                   >
                     <div
                       className={`bg-gradient-to-br ${mode.color} p-3.5 rounded-xl shadow-lg flex-shrink-0`}
@@ -182,14 +171,14 @@ export default function HeroSection() {
                       <mode.icon size={26} className="text-white" />
                     </div>
                     <div>
-                      <h3 className="text-white font-bold text-base group-hover:text-[#F97316] transition-colors">
+                      <h3 className="text-[#0F2C59] font-bold text-base group-hover:text-[#F97316] transition-colors">
                         {mode.title}
                       </h3>
-                      <p className="text-white/60 text-sm mt-0.5">{mode.desc}</p>
+                      <p className="text-[#475569] text-sm mt-0.5">{mode.desc}</p>
                     </div>
                     <ArrowRight
                       size={18}
-                      className="text-white/30 group-hover:text-[#F97316] group-hover:translate-x-1 transition-all ml-auto"
+                      className="text-[#0F2C59]/40 group-hover:text-[#F97316] group-hover:translate-x-1 transition-all ml-auto"
                     />
                   </Link>
                 </motion.div>

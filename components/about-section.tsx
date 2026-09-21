@@ -27,11 +27,11 @@ const features = [
 
 const usps = [
   'End-to-end supply chain under one roof',
-  'Own fleet for ground transportation',
+  'Fleet Owner & Transport Contractor',
   'Expert customs & DGFT documentation',
   'Transparent, real-time shipment updates',
   'Dedicated account management team',
-  'Compliant with international trade regulations',
+  'ISO certified & compliant with international trade regulations',
 ]
 
 const fadeUp = {

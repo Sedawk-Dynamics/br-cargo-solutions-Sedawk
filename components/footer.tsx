@@ -1,23 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Phone, Mail, MapPin, FileCheck } from 'lucide-react'
-
-const services = [
-  'International Air Freight',
-  'Global Ocean Freight',
-  'Multimodal Transport',
-  'Customs Clearance',
-  'DGFT Documentation',
-  'Door-to-Door Logistics',
-  'Warehousing & Distribution',
-  'Road Container Movement',
-]
+import { Phone, Mail, MapPin, FileCheck, BadgeCheck } from 'lucide-react'
+import { servicesList } from '@/data/services-data'
 
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/#about' },
   { label: 'Services', href: '/services' },
-  { label: 'Track & Quote', href: '/#quote' },
+  { label: 'Get a Quote', href: '/#quote' },
   { label: 'Contact Us', href: '/#contact' },
 ]
 
@@ -72,9 +62,9 @@ export default function Footer() {
               <Image
                 src="/br-cargo-logo.jpeg"
                 alt="BR Cargo Solutions Pvt. Ltd."
-                width={56}
-                height={56}
-                className="rounded-md bg-white p-1 object-contain"
+                width={88}
+                height={88}
+                className="h-20 w-20 rounded-lg bg-white p-1.5 object-contain"
               />
               <div>
                 <p className="font-bold text-sm leading-tight tracking-wide uppercase">
@@ -89,6 +79,14 @@ export default function Footer() {
               Premier international logistics partner specializing in seamless
               cross-border freight management by air, sea, and land.
             </p>
+            <div className="flex flex-col gap-2 mb-6">
+              <span className="inline-flex w-fit items-center gap-2 bg-[#F97316] text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
+                <BadgeCheck size={14} /> ISO Certified Company
+              </span>
+              <span className="text-white/80 text-sm font-semibold">
+                Fleet Owner &amp; Transport Contractor
+              </span>
+            </div>
             {/* Social media icons */}
             <div className="flex items-center gap-3">
               {socialLinks.map((item) => (
@@ -132,14 +130,14 @@ export default function Footer() {
               Our Services
             </h4>
             <ul className="space-y-2.5">
-              {services.map((s) => (
-                <li key={s}>
+              {servicesList.map((s) => (
+                <li key={s.slug}>
                   <Link
-                    href="/services"
+                    href={`/services/${s.slug}`}
                     className="text-white/60 hover:text-[#F97316] text-sm transition-colors flex items-center gap-2"
                   >
                     <span className="w-1 h-1 rounded-full bg-[#F97316]" />
-                    {s}
+                    {s.label}
                   </Link>
                 </li>
               ))}
