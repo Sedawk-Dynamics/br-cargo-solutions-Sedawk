@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Phone, Mail, Clock, ArrowRight, Send } from 'lucide-react'
+import { phoneNumbers, officeLocation } from '@/lib/site-config'
 
 const contactDetails = [
   {
@@ -17,8 +18,8 @@ const contactDetails = [
   {
     icon: Phone,
     label: 'Phone',
-    lines: ['+91 9999879337'],
-    href: 'tel:+919999879337',
+    lines: phoneNumbers.map((p) => p.display),
+    hrefs: phoneNumbers.map((p) => p.href),
   },
   {
     icon: Mail,
@@ -100,10 +101,10 @@ export default function ContactSection() {
                     {c.label}
                   </p>
                   {c.lines.map((line, i) =>
-                    c.href && i === 0 ? (
+                    c.hrefs?.[i] || (c.href && i === 0) ? (
                       <a
                         key={line}
-                        href={c.href}
+                        href={c.hrefs?.[i] ?? c.href}
                         className="block text-[#64748B] text-sm hover:text-[#F97316] transition-colors leading-snug truncate"
                       >
                         {line}
@@ -173,9 +174,9 @@ export default function ContactSection() {
                         className="border border-[#E2E8F0] rounded-lg px-4 py-2.5 text-sm text-[#0F2C59] focus:outline-none focus:ring-2 focus:ring-[#F97316]/40 focus:border-[#F97316] bg-white"
                       >
                         <option value="">Select cargo type</option>
-                        <option>Air Freight</option>
-                        <option>Ocean Freight (FCL)</option>
-                        <option>Ocean Freight (LCL)</option>
+                        <option>Air Shipment</option>
+                        <option>Ocean Shipment (FCL)</option>
+                        <option>Ocean Shipment (LCL)</option>
                         <option>Road Transport</option>
                         <option>Customs Clearance</option>
                         <option>Warehousing</option>
@@ -211,26 +212,39 @@ export default function ContactSection() {
           </motion.div>
         </div>
 
-        {/* Map placeholder */}
+        {/* Live location map */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="mt-10 p-5 rounded-2xl overflow-hidden border border-[#E2E8F0] h-50 bg-[#E2E8F0] flex items-center justify-center"
+          className="mt-10 rounded-2xl overflow-hidden border border-[#E2E8F0] bg-white shadow-sm"
         >
-          <a
-            href="https://maps.google.com/?q=Mahavir+Enclave+South+West+Delhi+110045"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center gap-2 text-[#64748B] hover:text-[#0F2C59] transition-colors"
-          >
-            <MapPin size={32} className="text-[#F97316]" />
-            <p className="font-semibold text-sm">Mahavir Enclave, South West Delhi – 110045</p>
-            <span className="inline-flex items-center gap-1 text-xs text-[#F97316] font-semibold">
-              View on Google Maps <ArrowRight size={12} />
-            </span>
-          </a>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-5 py-4 border-b border-[#E2E8F0]">
+            <div className="flex items-center gap-3">
+              <MapPin size={20} className="text-[#F97316] flex-shrink-0" />
+              <div>
+                <p className="text-[#0F2C59] font-bold text-sm">Our Live Location</p>
+                <p className="text-[#64748B] text-xs">Mahavir Enclave, South West Delhi – 110045</p>
+              </div>
+            </div>
+            <a
+              href={officeLocation.mapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs text-[#F97316] font-semibold hover:underline underline-offset-2"
+            >
+              Open in Google Maps <ArrowRight size={12} />
+            </a>
+          </div>
+          <iframe
+            src={officeLocation.embedUrl}
+            title="BR Cargo Solutions live location"
+            className="w-full h-80 border-0 block"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
         </motion.div>
       </div>
     </section>

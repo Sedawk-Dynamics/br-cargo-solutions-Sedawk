@@ -7,14 +7,14 @@ import { Plane, Ship, Truck, ArrowRight, BadgeCheck } from 'lucide-react'
 const transportModes = [
   {
     icon: Plane,
-    title: 'Air Freight',
+    title: 'Air Shipment',
     desc: 'Time-critical cargo, worldwide hubs',
     color: 'from-blue-600 to-blue-800',
     href: '/services/air-freight',
   },
   {
     icon: Ship,
-    title: 'Ocean Freight',
+    title: 'Ocean Shipment',
     desc: 'FCL & LCL across all sea routes',
     color: 'from-[#0F2C59] to-[#1a3d7a]',
     href: '/services/ocean-freight',
@@ -79,7 +79,7 @@ export default function HeroSection() {
             <motion.div variants={item} className="flex flex-wrap gap-2 justify-center lg:justify-start mb-6">
               <span className="inline-flex items-center gap-2 bg-[#0F2C59] text-white text-xs font-semibold px-3.5 py-1.5 rounded-full tracking-wide uppercase shadow-md">
                 <BadgeCheck size={14} className="text-[#F97316]" />
-                ISO Certified Company
+                ISO 9001:2015 Certified Company
               </span>
               <span className="inline-flex items-center gap-2 bg-[#0F2C59] text-white text-xs font-semibold px-3.5 py-1.5 rounded-full tracking-wide uppercase shadow-md">
                 <Truck size={14} className="text-[#F97316]" />
@@ -93,7 +93,7 @@ export default function HeroSection() {
             >
               Seamless Global Logistics &{' '}
               <span className="text-[#EA580C]">
-                End-to-End Freight Solutions
+                End-to-End Shipment Solutions
               </span>
             </motion.h1>
 
@@ -102,7 +102,7 @@ export default function HeroSection() {
               className="text-[#0B1F3F] font-medium text-lg leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 bg-white/80 backdrop-blur-md rounded-xl px-5 py-4 shadow-lg border border-white/60"
             >
               Premier international logistics partner specializing in
-              cross-border air, ocean, and land freight management. We bridge
+              cross-border air, ocean, and land shipment management. We bridge
               global markets with secure, compliant shipping — from origin to
               destination, under one roof.
             </motion.p>

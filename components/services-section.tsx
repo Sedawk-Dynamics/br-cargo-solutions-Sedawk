@@ -8,7 +8,7 @@ const services = [
   {
     slug: "air-freight",
     image: "/air-freight.jpeg",
-    title: "Global Air Freight",
+    title: "Global Air Shipment",
     desc: "High-speed, time-definite air cargo services for urgent, high-value, or perishable goods connecting major hubs worldwide.",
     tag: "Air",
     tagColor: "bg-blue-100 text-blue-700",
@@ -16,7 +16,7 @@ const services = [
   {
     slug: "ocean-freight",
     image: "/ocean-frieght.jpeg",
-    title: "Global Ocean Freight",
+    title: "Global Ocean Shipment",
     desc: "Full Container Load (FCL) and Less than Container Load (LCL) shipping options across all major global sea routes.",
     tag: "Ocean",
     tagColor: "bg-[#0F2C59]/10 text-[#0F2C59]",
@@ -33,7 +33,7 @@ const services = [
     slug: "customs-clearance",
     image: "/custom-clearance.jpeg",
     title: "Customs Clearance & Compliance",
-    desc: "Complete management of complex international customs paperwork, duty structures, tariff classifications, and regulatory compliance.",
+    desc: "Expert handling of customs, duties, tariffs, and compliance.",
     tag: "Customs",
     tagColor: "bg-purple-100 text-purple-700",
   },
@@ -49,15 +49,15 @@ const services = [
     slug: "warehousing-distribution",
     image: "/warehousing-distribution.jpeg",
     title: "Warehousing & Distribution",
-    desc: "Secure global storage and consolidation hubs equipped for inventory management and efficient cross-docking before final distribution.",
+    desc: "Secure global storage, consolidation, and cross-docking.",
     tag: "Warehouse",
     tagColor: "bg-green-100 text-green-700",
   },
   {
     slug: "dgft-export",
     image: "/dgft-export.jpeg",
-    title: "DGFT & Export Documentation",
-    desc: "Expert handling of DGFT services, import/export licensing, duty drawback, and all regulatory export documentation requirements.",
+    title: "DGFT, Icegate Services & Certifications",
+    desc: "Expert handling of DGFT, Icegate services, import/export licensing, duty drawback, and all regulatory export documentation.",
     tag: "Documentation",
     tagColor: "bg-rose-100 text-rose-700",
   },
@@ -65,7 +65,7 @@ const services = [
     slug: "road-container-movement",
     image: "/road-container-movement.jpeg",
     title: "Road Container Movement",
-    desc: "Own fleet providing reliable inland container movement, last-mile delivery, and cross-border road freight between countries.",
+    desc: "Own fleet providing reliable inland container movement, last-mile delivery, and cross-border road shipment between countries.",
     tag: "Road",
     tagColor: "bg-amber-100 text-amber-700",
   },
@@ -96,7 +96,7 @@ export default function ServicesSection() {
             Our Services
           </span>
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#0F2C59] text-balance">
-            Comprehensive Freight &{" "}
+            Comprehensive Shipment &{" "}
             <span className="text-[#F97316]">Logistics Solutions</span>
           </h2>
           <p className="mt-4 text-[#64748B] text-lg max-w-2xl mx-auto leading-relaxed">

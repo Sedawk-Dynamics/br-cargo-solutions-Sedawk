@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Phone, Mail, MapPin, FileCheck, BadgeCheck } from 'lucide-react'
+import { Phone, Mail, MapPin, FileCheck, BadgeCheck, ArrowRight } from 'lucide-react'
 import { servicesList } from '@/data/services-data'
+import { phoneNumbers, officeLocation } from '@/lib/site-config'
 
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/#about' },
-  { label: 'Services', href: '/services' },
+  { label: 'Services', href: '/#services' },
   { label: 'Get a Quote', href: '/#quote' },
   { label: 'Contact Us', href: '/#contact' },
 ]
@@ -54,41 +55,32 @@ export default function Footer() {
   return (
     <footer className="bg-[#091e3e] text-white">
       {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-6 pt-14 pb-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10">
           {/* Brand */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-5">
+          <div className="sm:col-span-2 lg:col-span-4">
+            <Link href="/" className="inline-block mb-5" aria-label="BR Cargo Solutions – Home">
               <Image
-                src="/br-cargo-logo.jpeg"
+                src="/br-cargo-logo-horizontal-light.png"
                 alt="BR Cargo Solutions Pvt. Ltd."
-                width={88}
-                height={88}
-                className="h-20 w-20 rounded-lg bg-white p-1.5 object-contain"
+                width={1200}
+                height={319}
+                className="h-16 w-auto object-contain"
               />
-              <div>
-                <p className="font-bold text-sm leading-tight tracking-wide uppercase">
-                  BR Cargo Solutions
-                </p>
-                <p className="text-[#F97316] text-xs font-semibold tracking-widest uppercase">
-                  Pvt. Ltd.
-                </p>
-              </div>
-            </div>
-            <p className="text-white/60 text-sm leading-relaxed mb-6">
+            </Link>
+            <p className="text-white/60 text-sm leading-relaxed mb-5 max-w-sm">
               Premier international logistics partner specializing in seamless
-              cross-border freight management by air, sea, and land.
+              cross-border shipment management by air, sea, and land.
             </p>
-            <div className="flex flex-col gap-2 mb-6">
-              <span className="inline-flex w-fit items-center gap-2 bg-[#F97316] text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
-                <BadgeCheck size={14} /> ISO Certified Company
+            <div className="flex flex-wrap items-center gap-2 mb-6">
+              <span className="inline-flex items-center gap-1.5 bg-[#F97316] text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
+                <BadgeCheck size={14} /> ISO 9001:2015 Certified
               </span>
-              <span className="text-white/80 text-sm font-semibold">
+              <span className="inline-flex items-center border border-white/15 text-white/80 text-xs font-semibold px-3 py-1.5 rounded-full">
                 Fleet Owner &amp; Transport Contractor
               </span>
             </div>
-            {/* Social media icons */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5">
               {socialLinks.map((item) => (
                 <a
                   key={item.label}
@@ -96,7 +88,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={item.label}
-                  className="bg-white/8 hover:bg-[#F97316] text-white/70 hover:text-white p-2.5 rounded-lg transition-all transform hover:-translate-y-0.5"
+                  className="bg-white/10 hover:bg-[#F97316] text-white/70 hover:text-white p-2.5 rounded-lg transition-all hover:-translate-y-0.5"
                 >
                   {item.svg}
                 </a>
@@ -105,8 +97,8 @@ export default function Footer() {
           </div>
 
           {/* Quick links */}
-          <div>
-            <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-5 border-b border-white/10 pb-3">
+          <div className="lg:col-span-2">
+            <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-5 pb-3 border-b border-white/10">
               Quick Links
             </h4>
             <ul className="space-y-2.5">
@@ -125,8 +117,8 @@ export default function Footer() {
           </div>
 
           {/* Services */}
-          <div>
-            <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-5 border-b border-white/10 pb-3">
+          <div className="lg:col-span-3">
+            <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-5 pb-3 border-b border-white/10">
               Our Services
             </h4>
             <ul className="space-y-2.5">
@@ -136,7 +128,7 @@ export default function Footer() {
                     href={`/services/${s.slug}`}
                     className="text-white/60 hover:text-[#F97316] text-sm transition-colors flex items-center gap-2"
                   >
-                    <span className="w-1 h-1 rounded-full bg-[#F97316]" />
+                    <span className="w-1 h-1 rounded-full bg-[#F97316] flex-shrink-0" />
                     {s.label}
                   </Link>
                 </li>
@@ -145,26 +137,30 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
-            <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-5 border-b border-white/10 pb-3">
+          <div className="sm:col-span-2 lg:col-span-3">
+            <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-5 pb-3 border-b border-white/10">
               Contact Info
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-3.5">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#F97316] flex-shrink-0 mt-0.5" />
                 <p className="text-white/60 text-sm leading-relaxed">
-                  H. No. RZ C-61, F/F Kh No.115/11, Mahavir Enclave, South West
-                  Delhi, New Delhi – 110045
+                  {officeLocation.address}
                 </p>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone size={16} className="text-[#F97316] flex-shrink-0" />
-                <a
-                  href="tel:+919999879337"
-                  className="text-white/60 hover:text-[#F97316] text-sm transition-colors"
-                >
-                  +91 9999879337
-                </a>
+              <li className="flex items-start gap-3">
+                <Phone size={16} className="text-[#F97316] flex-shrink-0 mt-0.5" />
+                <div className="flex flex-wrap gap-x-3 gap-y-1">
+                  {phoneNumbers.map((p) => (
+                    <a
+                      key={p.href}
+                      href={p.href}
+                      className="text-white/60 hover:text-[#F97316] text-sm transition-colors"
+                    >
+                      {p.display}
+                    </a>
+                  ))}
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[#F97316] flex-shrink-0" />
@@ -177,14 +173,30 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <FileCheck size={16} className="text-[#F97316] flex-shrink-0" />
-                <div>
-                  <p className="text-white/40 text-xs mb-0.5">GSTIN</p>
-                  <p className="text-white/60 text-sm font-mono tracking-wide">
-                    07AAOCB7231M1Z9
-                  </p>
-                </div>
+                <p className="text-white/60 text-sm">
+                  GSTIN: <span className="font-mono tracking-wide">07AAOCB7231M1Z9</span>
+                </p>
               </li>
             </ul>
+
+            {/* Live location (compact) */}
+            <div className="mt-5 rounded-xl overflow-hidden border border-white/10">
+              <iframe
+                src={officeLocation.embedUrl}
+                title="BR Cargo Solutions office location"
+                className="w-full h-32 border-0 block"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <a
+                href={officeLocation.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1.5 bg-white/5 hover:bg-[#F97316] text-white/80 hover:text-white text-xs font-semibold py-2 transition-colors"
+              >
+                View Live Location <ArrowRight size={12} />
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -195,15 +207,12 @@ export default function Footer() {
           <p className="text-white/40 text-xs text-center sm:text-left">
             &copy; {new Date().getFullYear()} BR Cargo Solutions Pvt. Ltd. All rights reserved.
           </p>
-          <p className="text-white/40 text-xs text-center">
-            Domain:{' '}
-            <a
-              href="https://brcargosolutions.com"
-              className="hover:text-[#F97316] transition-colors"
-            >
-              brcargosolutions.com
-            </a>
-          </p>
+          <a
+            href="https://brcargosolutions.com"
+            className="text-white/40 hover:text-[#F97316] text-xs transition-colors"
+          >
+            www.brcargosolutions.com
+          </a>
         </div>
       </div>
     </footer>

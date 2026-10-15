@@ -17,9 +17,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "BR Cargo Solutions Pvt. Ltd. | International Freight & Logistics",
+  title: "BR Cargo Solutions Pvt. Ltd. | International Shipment & Logistics",
   description:
-    "Premier international logistics partner specializing in seamless cross-border freight management — air, ocean, and land. Customs clearance, DGFT documentation, door-to-door delivery.",
+    "Premier international logistics partner specializing in seamless cross-border shipment management — air, ocean, and land. Customs clearance, DGFT documentation, door-to-door delivery.",
   keywords: [
     "freight forwarding",
     "international logistics",
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://brcargosolutions.com",
-    title: "BR Cargo Solutions Pvt. Ltd. | International Freight & Logistics",
+    title: "BR Cargo Solutions Pvt. Ltd. | International Shipment & Logistics",
     description:
-      "Seamless global logistics & end-to-end freight solutions. Air, ocean, and land freight forwarding with full customs clearance.",
+      "Seamless global logistics & end-to-end shipment solutions. Air, ocean, and land freight forwarding with full customs clearance.",
     siteName: "BR Cargo Solutions",
   },
   icons: {

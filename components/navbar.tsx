@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Menu, X, Phone, Mail, ChevronDown, BadgeCheck } from 'lucide-react'
 import { servicesList } from '@/data/services-data'
+import { phoneNumbers } from '@/lib/site-config'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -33,12 +34,19 @@ export default function Navbar() {
           scrolled ? 'max-h-0 opacity-0 py-0 border-none' : 'max-h-12 opacity-100 py-2'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-screen-2xl mx-auto px-3 md:px-5 flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <a href="tel:+919999879337" className="flex items-center gap-2 hover:text-[#F97316] transition-colors">
+            <div className="flex items-center gap-2">
               <Phone size={13} className="text-[#F97316]" />
-              <span>+91 9999879337</span>
-            </a>
+              {phoneNumbers.map((p, i) => (
+                <span key={p.href} className="flex items-center gap-2">
+                  {i > 0 && <span className="text-white/30">/</span>}
+                  <a href={p.href} className="hover:text-[#F97316] transition-colors">
+                    {p.display}
+                  </a>
+                </span>
+              ))}
+            </div>
             <a href="mailto:info@brcargosolutions.com" className="flex items-center gap-2 hover:text-[#F97316] transition-colors">
               <Mail size={13} className="text-[#F97316]" />
               <span>info@brcargosolutions.com</span>
@@ -47,7 +55,7 @@ export default function Navbar() {
           <div className="flex items-center gap-5 text-xs tracking-wide">
             <span className="text-white/80 font-semibold">Fleet Owner &amp; Transport Contractor</span>
             <span className="inline-flex items-center gap-1.5 bg-[#F97316] text-white font-bold px-2.5 py-0.5 rounded-full">
-              <BadgeCheck size={13} /> ISO Certified
+              <BadgeCheck size={13} /> ISO 9001:2015
             </span>
             <span className="text-white/70">Mon – Sat: 9:00 AM – 7:00 PM IST</span>
           </div>
@@ -58,33 +66,27 @@ export default function Navbar() {
       <nav
         className={`w-full transition-all duration-300 ${
           scrolled
-            ? 'bg-[#0F2C59]/95 backdrop-blur-md shadow-xl shadow-[#091e3e]/50 border-b border-[#F97316]/40 py-2.5'
-            : 'bg-[#0F2C59] border-b border-white/10 shadow-md py-3'
+            ? 'bg-white/95 backdrop-blur-md shadow-lg shadow-[#091e3e]/15 border-b border-[#F97316]/40 py-1'
+            : 'bg-white border-b border-[#E2E8F0] shadow-md py-1.5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-screen-2xl mx-auto px-3 md:px-5 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center shrink-0 group">
             <Image
-              src="/br-cargo-logo.jpeg"
+              src="/br-cargo-logo-horizontal.png"
               alt="BR Cargo Solutions Pvt. Ltd."
-              width={96}
-              height={96}
-              className="h-16 w-16 md:h-20 md:w-20 shrink-0 rounded-lg object-contain bg-white p-1 shadow-sm group-hover:scale-105 transition-transform"
+              width={1200}
+              height={319}
+              className={`w-auto object-contain origin-left group-hover:scale-[1.03] transition-all duration-300 ${
+                scrolled ? 'h-14 md:h-[68px]' : 'h-14 md:h-20'
+              }`}
               priority
             />
-            <div className="hidden sm:block leading-tight">
-              <p className="text-white font-extrabold text-lg md:text-xl tracking-wide uppercase">
-                BR Cargo Solutions
-              </p>
-              <p className="text-[#F97316] text-xs font-semibold tracking-widest uppercase">
-                Pvt. Ltd. · ISO Certified
-              </p>
-            </div>
           </Link>
 
           {/* Desktop links */}
-          <ul className="hidden lg:flex items-center gap-1 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm">
+          <ul className="hidden lg:flex items-center gap-1 bg-[#0F2C59]/5 border border-[#0F2C59]/10 rounded-full px-3 py-1.5">
             {navLinks.map((link) => {
               if (link.label === 'Services') {
                 return (
@@ -97,14 +99,14 @@ export default function Navbar() {
                     <div className="flex items-center">
                       <Link
                         href="/#services"
-                        className="text-white/85 hover:text-white text-sm font-medium px-4 py-1.5 rounded-full hover:bg-white/15 hover:underline decoration-[#F97316] underline-offset-4 transition-all inline-flex items-center gap-1.5"
+                        className="text-[#0F2C59] hover:text-[#F97316] text-sm font-semibold px-4 py-1.5 rounded-full hover:bg-[#0F2C59]/8 hover:underline decoration-[#F97316] underline-offset-4 transition-all inline-flex items-center gap-1.5"
                         onClick={() => setDesktopServicesOpen(false)}
                       >
                         <span>{link.label}</span>
                         <ChevronDown
                           size={14}
                           className={`transition-transform duration-200 ${
-                            desktopServicesOpen ? 'rotate-180 text-[#F97316]' : 'text-white/70'
+                            desktopServicesOpen ? 'rotate-180 text-[#F97316]' : 'text-[#0F2C59]/60'
                           }`}
                         />
                       </Link>
@@ -137,7 +139,7 @@ export default function Navbar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-white/85 hover:text-white text-sm font-medium px-4 py-1.5 rounded-full hover:bg-white/15 transition-all block"
+                    className="text-[#0F2C59] hover:text-[#F97316] text-sm font-semibold px-4 py-1.5 rounded-full hover:bg-[#0F2C59]/8 transition-all block"
                   >
                     {link.label}
                   </Link>
@@ -159,7 +161,7 @@ export default function Navbar() {
           {/* Mobile burger */}
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden text-white p-2 rounded-md hover:bg-white/10 transition-colors"
+            className="lg:hidden text-[#0F2C59] p-2 rounded-md hover:bg-[#0F2C59]/8 transition-colors"
             aria-label={open ? 'Close menu' : 'Open menu'}
           >
             {open ? <X size={24} /> : <Menu size={24} />}
