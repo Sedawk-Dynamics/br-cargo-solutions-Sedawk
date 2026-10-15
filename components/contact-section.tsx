@@ -212,42 +212,86 @@ export default function ContactSection() {
           </motion.div>
         </div>
 
-        {/* Live location map */}
+        {/* Live location: map (left) + visit info (right) */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="mt-10 rounded-2xl overflow-hidden border border-[#E2E8F0] bg-white shadow-sm"
+          className="mt-10 grid lg:grid-cols-2 rounded-2xl overflow-hidden border border-[#E2E8F0] bg-white shadow-sm"
         >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-5 py-4 border-b border-[#E2E8F0]">
-            <div className="flex items-center gap-3">
-              <MapPin size={20} className="text-[#F97316] flex-shrink-0" />
-              <div>
-                <p className="text-[#0F2C59] font-bold text-sm">Our Live Location</p>
-                <p className="text-[#64748B] text-xs">Mahavir Enclave, South West Delhi – 110045</p>
-              </div>
-            </div>
-            <a
-              href={officeLocation.mapUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs text-[#F97316] font-semibold hover:underline underline-offset-2"
-            >
-              Open in Google Maps <ArrowRight size={12} />
-            </a>
-          </div>
           <iframe
             src={officeLocation.embedUrl}
             title="BR Cargo Solutions live location"
-            className="w-full h-80 border-0 block"
+            className="w-full h-72 lg:h-full lg:min-h-[340px] border-0 block"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
           />
+
+          <div className="p-6 md:p-8 flex flex-col justify-center gap-5">
+            <div>
+              <span className="inline-flex items-center gap-1.5 text-[#F97316] font-semibold text-xs uppercase tracking-widest mb-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-[#F97316] opacity-75 animate-ping" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#F97316]" />
+                </span>
+                Our Live Location
+              </span>
+              <h3 className="text-[#0F2C59] font-extrabold text-xl md:text-2xl">Visit Our Office</h3>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <div className="bg-[#0F2C59]/8 p-2.5 rounded-lg flex-shrink-0">
+                <MapPin size={18} className="text-[#0F2C59]" />
+              </div>
+              <div>
+                <p className="text-[#0F2C59] font-bold text-sm">BR Cargo Solutions Pvt. Ltd.</p>
+                <p className="text-[#64748B] text-sm leading-relaxed">{officeLocation.address}</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <div className="bg-[#0F2C59]/8 p-2.5 rounded-lg flex-shrink-0">
+                <Phone size={18} className="text-[#0F2C59]" />
+              </div>
+              <div className="flex flex-wrap gap-x-4 gap-y-1 pt-1.5">
+                {phoneNumbers.map((p) => (
+                  <a key={p.href} href={p.href} className="text-[#0F2C59] font-semibold text-sm hover:text-[#F97316] transition-colors">
+                    {p.display}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <div className="bg-[#0F2C59]/8 p-2.5 rounded-lg flex-shrink-0">
+                <Clock size={18} className="text-[#0F2C59]" />
+              </div>
+              <p className="text-[#64748B] text-sm pt-1.5">
+                <span className="text-[#0F2C59] font-semibold">Mon – Sat:</span> 9:00 AM – 7:00 PM IST
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-3 pt-4 border-t border-[#E2E8F0]">
+              <a
+                href={officeLocation.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#F97316] hover:bg-[#ea6a05] text-white font-bold px-5 py-2.5 rounded-lg text-sm transition-colors shadow-md shadow-[#F97316]/20"
+              >
+                <MapPin size={15} /> Get Directions
+              </a>
+              <a
+                href={phoneNumbers[0].href}
+                className="inline-flex items-center gap-2 bg-[#0F2C59] hover:bg-[#091e3e] text-white font-bold px-5 py-2.5 rounded-lg text-sm transition-colors"
+              >
+                <Phone size={15} /> Call Us
+              </a>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
   )
 }
-
